@@ -1,0 +1,19 @@
+body {
+    background-color: aliceblue !important;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+
+h1 {
+    
+    margin-inline: 20%;
+    text-align: center;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    padding-inline: 20%;
+    padding-top: 5%;
+    height: 100vh;
+}
