@@ -10,7 +10,7 @@ class Livro(BaseModel):
 class Leitor(BaseModel):
     uuid:int
     nome:str
-    livros_emprestados:list
+    livros_emprestados:list[list]
 
 class Emprestimo(BaseModel):
     uuid:int
