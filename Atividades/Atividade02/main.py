@@ -34,19 +34,7 @@ def listar_livros_emprestados_por_leitor(leitor_uuid: int):
     for leitor in leitores:
         if leitor.uuid == leitor_uuid:
             return leitor.livros_emprestados
-    raise HTTPException(status_code=404, detail="Não Localizado.")
-
-@app.get("/emprestimos/{leitor_uuid}", response_model=List[Emprestimo])
-def listar_emprestimo(leitor_uuid:int):
-    all_emprestimos = []
-    for emprestimo in emprestimos:
-        if emprestimo.leitor_id == leitor_uuid:
-            all_emprestimos.append(emprestimo)
-
-    if all_emprestimos == []: 
-        raise HTTPException(status_code=404, detail="Não Localizado.")
-    return all_emprestimos
-    
+    raise HTTPException(status_code=404, detail="Não Localizado.") 
 
 @app.post("/emprestimos/", response_model=Emprestimo)
 def adicionar_emprestimo(leitor_uuid:int, livro_uuid:int, data_de_emprestimo:str):
@@ -78,6 +66,17 @@ def adicionar_emprestimo(leitor_uuid:int, livro_uuid:int, data_de_emprestimo:str
     leitor.livros_emprestados.append([livro.uuid, livro.titulo])
     emprestimos.append(emprestimo)
     return emprestimo
+
+@app.get("/emprestimos/{leitor_uuid}", response_model=List[Emprestimo])
+def listar_emprestimo(leitor_uuid:int):
+    all_emprestimos = []
+    for emprestimo in emprestimos:
+        if emprestimo.leitor_id == leitor_uuid:
+            all_emprestimos.append(emprestimo)
+
+    if all_emprestimos == []: 
+        raise HTTPException(status_code=404, detail="Não Localizado.")
+    return all_emprestimos
 
 @app.post("/devolucao/", response_model=Emprestimo)
 def registrar_devolucao(leitor_uuid:int, livro_uuid:int, data_de_devolucao:str):
