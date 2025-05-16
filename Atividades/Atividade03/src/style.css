@@ -1,0 +1,24 @@
+.modal-dialog {
+    height: 70vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.modal-content {
+    height: 50%;
+    padding-inline: 5vh;
+    overflow-y: auto;
+}
+
+.modal-livros {
+    height: 70%;
+    padding-inline: 5vh;
+    overflow-y: auto;
+}
+
+.modal-buscarLivro {
+    height: 30%;
+    padding-inline: 5vh;
+    overflow-y: auto;
+}
